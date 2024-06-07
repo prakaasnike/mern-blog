@@ -5,6 +5,10 @@ import logo from '../imgs/logo.png';
 const Navbar = () => {
     const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
 
+    const toggleSearchBox = () => {
+        setSearchBoxVisibility(currentValue => !currentValue);
+    };
+
     return (
         <>
             <nav className="navbar">
@@ -30,31 +34,28 @@ const Navbar = () => {
                 {/* Toggle */}
                 <div className="flex items-center gap-3 ml-auto md:gap-6">
                     <button
-                        onClick={() =>
-                            setSearchBoxVisibility(
-                                currentValue => !currentValue
-                            )
-                        }
+                        onClick={toggleSearchBox}
                         className="flex items-center justify-center w-12 h-12 rounded-full md:hidden bg-grey"
                     >
                         <i className="text-xl fi-rr-search"></i>
                     </button>
 
-                    {/* Corrected "write" section */}
+                    {/* Write link */}
                     <Link to="/editor" className="hidden gap-2 md:flex link">
                         <i className="fi fi-rr-file-edit"></i>
-                        <p>write</p>
+                        <p>Write</p>
                     </Link>
 
+                    {/* Sign In and Sign Up links */}
                     <Link to="/signin" className="py-2 btn-dark">
-                        sign In
+                        Sign In
                     </Link>
 
                     <Link
                         to="/signup"
                         className="hidden py-2 btn-light md:block"
                     >
-                        sign up
+                        Sign Up
                     </Link>
                 </div>
             </nav>
